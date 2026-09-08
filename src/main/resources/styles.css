@@ -1,0 +1,237 @@
+/* ---------- Design tokens ---------- */
+.root {
+    -primary: #5B9BD5;
+    -primary-dark: #3E7CB1;
+    -success: #16A34A;
+    -success-dark: #15803D;
+    -danger: #DC2626;
+    -danger-dark: #B91C1C;
+    -bg: #F1F5F9;
+    -surface: #FFFFFF;
+    -text-main: #1E293B;
+    -text-muted: #64748B;
+    -border: #CBD5E1;
+
+    -fx-background-color: -bg;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: -text-main;
+}
+
+/* ---------- Side navigation ---------- */
+.side-nav {
+    -fx-background-color: linear-gradient(to bottom, #1E293B, #0F172A);
+}
+
+.nav-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.nav-separator .line {
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-button {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-text-fill: rgba(255, 255, 255, 0.85);
+    -fx-font-size: 13px;
+    -fx-padding: 10 14 10 14;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-alignment: center-left;
+}
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.14);
+    -fx-text-fill: white;
+}
+.nav-button:pressed {
+    -fx-background-color: -primary;
+    -fx-text-fill: white;
+}
+.nav-button-active {
+    -fx-background-color: -primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent transparent transparent #93C5FD;
+    -fx-border-width: 0 0 0 3;
+}
+.nav-button-active:hover {
+    -fx-background-color: -primary-dark;
+}
+
+/* ---------- Layout basics ---------- */
+.screen-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-main;
+    -fx-padding: 0 0 12 0;
+}
+
+.form-grid {
+    -fx-padding: 16;
+    -fx-hgap: 12;
+    -fx-vgap: 12;
+}
+
+.error-label {
+    -fx-text-fill: -danger;
+    -fx-font-size: 12px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    -fx-background-color: -surface;
+    -fx-background-radius: 10;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(15,23,42,0.10), 10, 0, 0, 2);
+}
+
+/* ---------- Inputs ---------- */
+.text-field, .combo-box {
+    -fx-background-color: -surface;
+    -fx-background-radius: 6;
+    -fx-border-color: -border;
+    -fx-border-radius: 6;
+    -fx-border-width: 1.5;
+    -fx-padding: 6 10 6 10;
+    -fx-pref-height: 30;
+    -fx-text-fill: -text-main;
+}
+/* A ComboBox's own internal display cell doesn't reliably inherit the
+   text-fill above (it comes from JavaFX's built-in cell styling instead),
+   so it needs to be targeted directly to match plain TextFields exactly. */
+.combo-box .list-cell {
+    -fx-text-fill: -text-main;
+}
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #5B9BD5;
+}
+/* Flatten the little grey arrow-button box that JavaFX draws by default so
+   every combo box (editable or not) reads as one plain pill, not a pill
+   with a separate shaded button stuck on the end. */
+.combo-box > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.combo-box > .arrow-button > .arrow {
+    -fx-background-color: -text-muted;
+}
+
+/* The Borrower ComboBox is wrapped in a StackPane styled with the plain
+   .text-field class (see DisburseLoanScreen), so it looks exactly like the
+   Principal/Interest/Term boxes. The ComboBox itself, and its inner editor
+   TextField and arrow-button, render fully transparent, no border, no
+   background, no radius, so only the wrapper's single box shows through. */
+.combo-box:editable {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+.combo-box:editable > .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-prompt-text-fill: -text-muted;
+}
+.combo-box:editable > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* ---------- Buttons ---------- */
+.primary-button, .success-button, .danger-button {
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 9 20 9 20;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.primary-button {
+    -fx-background-color: -primary;
+}
+.primary-button:hover {
+    -fx-background-color: -primary-dark;
+}
+.primary-button:pressed {
+    -fx-background-color: derive(-primary-dark, -10%);
+}
+.success-button {
+    -fx-background-color: -success;
+}
+.success-button:hover {
+    -fx-background-color: -success-dark;
+}
+.success-button:pressed {
+    -fx-background-color: derive(-success-dark, -10%);
+}
+.danger-button {
+    -fx-background-color: -danger;
+}
+.danger-button:hover {
+    -fx-background-color: -danger-dark;
+}
+.danger-button:pressed {
+    -fx-background-color: derive(-danger-dark, -10%);
+}
+
+/* Light-red variant for Mark Repaid, background stays red, but border and
+   text colour are set to match Mark Defaulted's native default-button look
+   (medium blue border, black text) per explicit request, rather than the
+   pink border/text used before. */
+.light-red-button {
+    -fx-background-color: #E57373;
+    -fx-border-color: #5B9BD5;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+.light-red-button:hover {
+    -fx-background-color: #EF9A9A;
+}
+
+/* ---------- Tables / lists ---------- */
+.table-view, .list-view {
+    -fx-background-color: -surface;
+    -fx-background-radius: 8;
+    -fx-border-color: -border;
+    -fx-border-radius: 8;
+}
+.table-view .column-header-background {
+    -fx-background-color: #F8FAFC;
+    -fx-background-radius: 8 8 0 0;
+}
+.table-view .column-header .label {
+    -fx-text-fill: -text-muted;
+    -fx-font-weight: bold;
+}
+
+/* ---------- Risk bands (Dashboard) ---------- */
+.risk-high {
+    -fx-text-fill: -danger;
+    -fx-font-weight: bold;
+}
+.risk-medium {
+    -fx-text-fill: #D97706;
+    -fx-font-weight: bold;
+}
+.risk-low {
+    -fx-text-fill: -success;
+    -fx-font-weight: bold;
+}
+
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-main;
+}
+.stat-label {
+    -fx-text-fill: -text-muted;
+    -fx-font-size: 12px;
+}
+.stat-card {
+    -fx-alignment: center;
+}
