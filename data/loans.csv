@@ -1,0 +1,7 @@
+kind,id,borrowerId,borrowerName,borrowerIncome,borrowerDependents,borrowerVillage,principal,interestRateAnnual,termMonths,groupSize,status
+Micro,L-0001,B-0001,Amara Okafor,450.00,3,Riverside,2000.00,5.00,12,,Repaid
+Group,L-0002,B-0002,Priya Nair,620.00,1,Hillcrest,5000.00,8.00,24,5,Repaid
+Group,L-0003,B-0003,Josef Mbeki,300.00,4,Lakeside,8000.00,8.00,24,8,Active
+Micro,L-0005,B-0004,Richard Lerlec,500.00,0,Mountainview,5000.00,10.00,2,,Repaid
+Micro,L-0005,B-0006,Apple Fam,1800.00,3,Bukitjalil,2000.00,5.00,12,,Repaid
+Group,L-0006,B-0005,Jolie William,5000.00,0,Roadcrest,5000.00,8.00,24,5,Active
